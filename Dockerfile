@@ -16,10 +16,18 @@ RUN apt-get update
 
 RUN apt install -y mongodb-org
 
+WORKDIR /app
+
+COPY package.json package-lock.json /app/
+
+RUN npm install
+
+COPY . /app
+
+EXPOSE 80
+
 RUN systemctl start mongod
 
 RUN mongorestore --host=localhost:27017 --db=rickmorty --drop ./test/data
-
-RUN npm install
 
 RUN npm start
