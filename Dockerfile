@@ -28,6 +28,6 @@ EXPOSE 80
 
 RUN systemctl start mongod
 
-RUN mongorestore --host=localhost:27017 --db=rickmorty --drop ./test/data
+RUN mongorestore --host=localhost:27017 --db=rickmorty --drop /app/test/data
 
 RUN npm start
