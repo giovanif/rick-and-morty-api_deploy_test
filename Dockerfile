@@ -1,5 +1,9 @@
 FROM ubuntu:22.04
 
+ENV TZ=America/Sao_Paulo
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt update
 
 RUN apt install nodejs npm curl systemctl gnupg -y
